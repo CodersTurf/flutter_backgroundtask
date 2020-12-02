@@ -22,12 +22,8 @@ class LocalNotification {
 
   static ShowOneTimeNotification(DateTime scheduledDate) async {
     var notificationDetails = NotificationDetails(androidSettings, null);
-    await flutterNotificationPlugin.schedule(
-        1,
-        "Background Task notification",
-        "This is a background task notification",
-        scheduledDate,
-        notificationDetails,
+    await flutterNotificationPlugin.schedule(1, "Background Task notification",
+        "Data saved to database", scheduledDate, notificationDetails,
         androidAllowWhileIdle: true);
   }
 }

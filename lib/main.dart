@@ -1,10 +1,14 @@
+import 'package:background_task/apihelper.dart';
 import 'package:background_task/local_notification.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
 
 void callbackDispatcher() {
   Workmanager.executeTask((taskName, inputData) async {
     //show the notification
+    await Firebase.initializeApp();
+    ApiHelper().save(inputData);
     LocalNotification.Initializer();
     LocalNotification.ShowOneTimeNotification(DateTime.now());
     return Future.value(true);
